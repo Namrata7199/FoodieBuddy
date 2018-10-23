@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+	@media only screen and (max-width: 720px)
+	{
+		.col{width:100%;}
+	}
+</style>
+	<div class="row">
+	    <div class="col s3 m4" style="margin: 50px; width: 25%;">
+	      <div class="card blue-grey darken-1">
+	        <div class="card-content white-text">
+	          <span class="card-title">Add Restaurant</span>
+	          <p>Want to expand your food business? Register your restaurant and let the world know you...</p>
+	        </div>
+	        <div class="card-action">
+	          <a href="#">Register</a>
+	        </div>
+	      </div>
+	    </div> 
+	    <div class="col s3 m4" style="margin: 50px; width: 25%;">
+	      <div class="card blue-grey darken-1">
+	        <div class="card-content white-text">
+	          <span class="card-title">Search Restaurant</span>
+	          <p>Wondering where to eat? You've come to right place. Signup yourself and get going...</p>
+	        </div>
+	        <div class="card-action">
+	          <a href="#">Signup</a>
+	        </div>
+	      </div>
+	    </div>
+  </div>
+{% endblock %}
