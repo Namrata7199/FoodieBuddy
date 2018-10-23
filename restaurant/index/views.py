@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 def home(request):
-	return render(request,'base.html')
+	return render(request,'home.html')
 
 def signupasuser(request):
     if request.method == 'POST':
@@ -51,3 +51,6 @@ def signupasrest(request):
     else:
         form = RestaurantForm()
     return render(request, 'signupasrest.html',{'form':form})    
+
+	
+
