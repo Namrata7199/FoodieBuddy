@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from .forms import SignUpForm
+from .forms import SignUpForm,RestaurantForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
