@@ -12,7 +12,7 @@ from django.shortcuts import render, redirect
 def home(request):
 	return render(request,'base.html')
 
-def signup(request):
+def signupasuser(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -31,5 +31,23 @@ def signup(request):
             return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})	
+    return render(request, 'signupasuser.html', {'form': form})	
     
+def signupasrest(request):
+    if request.method == 'POST':
+        form = RestaurantForm(request.POST)
+        if form.is_valid():
+            rest = form.save()
+            rest.refresh_from_db()
+            user.profile.Restaurant_name = form.cleaned_data.get('Restaurant_name')
+            rest.profile.Restaurant_address = form.cleaned_data.get('Restaurant_address')
+            rest.profile.gstin = form.cleaned_data.get('gstin')
+            rest.profile.Owner_name = form.cleaned_data.get('Owner_name')
+            rest.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, rest)
+            return redirect('home')
+    else:
+        form = RestaurantForm()
+    return render(request, 'signupasrest.html',{'form':form})    

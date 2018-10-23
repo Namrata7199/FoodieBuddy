@@ -45,7 +45,7 @@ class user(models.Model):
 	street = models.CharField(max_length=30)
 	city = models.CharField(max_length=30)
 	phn = models.IntegerField()
- 	rest = models.ForeignKey(restaurant,on_delete=models.CASCADE)
+	rest = models.ForeignKey(restaurant,on_delete=models.CASCADE)
 
 class search_by_cuisine(models.Model):
 	gstin = models.ForeignKey(restaurant,on_delete=models.CASCADE)
