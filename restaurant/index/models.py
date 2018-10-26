@@ -15,9 +15,9 @@ class restaurant(models.Model):
 	dno = models.CharField(max_length=10)
 	street = models.CharField(max_length=30)
 	city = models.CharField(max_length=30)
-	phn = models.IntegerField()
+	phn = models.CharField(max_length=10)
 	images = models.ImageField(max_length=10000)
-	menupk = models.ForeignKey(rest_menu,on_delete=models.CASCADE)
+	menupk = models.ManyToManyField(rest_menu)
 	cuisine = models.CharField(max_length=30)
 
 	class meta:
@@ -44,7 +44,7 @@ class user(models.Model):
 	dno = models.CharField(max_length=10)
 	street = models.CharField(max_length=30)
 	city = models.CharField(max_length=30)
-	phn = models.IntegerField()
+	phn = models.CharField(max_length=10)
  	rest = models.ForeignKey(restaurant,on_delete=models.CASCADE)
 
 class search_by_cuisine(models.Model):
