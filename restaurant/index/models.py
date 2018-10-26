@@ -35,7 +35,6 @@ class reviews(models.Model):
 	Feedback = models.CharField(max_length=1000)
 	gstin = models.ForeignKey(restaurant,on_delete=models.CASCADE)
 	userpk = models.ForeignKey(owner,on_delete=models.CASCADE)
-
 class user(models.Model):
 	email = models.CharField(primary_key=True,max_length = 30)
 	first_name = models.CharField(max_length=30)
@@ -46,6 +45,8 @@ class user(models.Model):
 	city = models.CharField(max_length=30)
 	phn = models.CharField(max_length=10)
  	rest = models.ForeignKey(restaurant,on_delete=models.CASCADE)
+	phn = models.IntegerField()
+	rest = models.ForeignKey(restaurant,on_delete=models.CASCADE)
 
 class search_by_cuisine(models.Model):
 	gstin = models.ForeignKey(restaurant,on_delete=models.CASCADE)
