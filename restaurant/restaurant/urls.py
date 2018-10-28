@@ -22,4 +22,5 @@ urlpatterns = [
 	url(r'^admin/', admin.site.urls),
 	url(r'^signup/$',index_views.signupasuser, name='signupasuser'),
 	url(r'^register/$',index_views.signupasrest, name='signupasrest'),
+    url(r'^restaurants/',include('rest_page.urls')),
 ]

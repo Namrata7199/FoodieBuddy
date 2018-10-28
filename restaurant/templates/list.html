@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul>
+	{% for x in all_rest %}
+	<li>{{x.name}}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
