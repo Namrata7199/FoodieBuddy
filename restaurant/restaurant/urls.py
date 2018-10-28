@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from index import views as index_views
 
 urlpatterns = [
@@ -23,4 +24,6 @@ urlpatterns = [
 	url(r'^signup/$',index_views.signupasuser, name='signupasuser'),
 	url(r'^register/$',index_views.signupasrest, name='signupasrest'),
     url(r'^restaurants/',include('rest_page.urls')),
+	url(r'^login/$',auth_views.login,{'template_name':'login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
 ]

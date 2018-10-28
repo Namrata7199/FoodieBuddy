@@ -1,21 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Sign up as a Restaurant Owner</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: blue">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: black">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
+  <h2>Register for Restaurant</h2>
+<form method="post"> 
+  {% csrf_token %} 
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="Username" type="text" class="validate">
+        <label for="Username">Restaurant name</label>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Mandatory" id="Restaurant_Add" type="text" class="validate">
+        <label for="Restaurant_Add">Restaurant Address</label>
+      </div>
+    </div>  
+      
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Mandatory" id="gstin" type="text" class="validate">
+        <label for="gstin">GST Index</label>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Mandatory" id="owner_name" type="text" class="validate">
+        <label for="owner_name">Owner Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Mandatory" id="Restaurant_Cuisine" type="text" class="validate">
+        <label for="Restaurant_Cuisine">Restaurant Cuisine</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="text" class="validate">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input  id="passwordagain" type="text" class="validate">
+        <label for="passwordagain">Password Confirmation</label>
+      </div>
+    </div>
+      <button type="submit">Register</button>
   </form>
-{% endblock %}
+</div>
+</form>
+{% endblock %}  
