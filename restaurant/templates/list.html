@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<ul>
+<ul style="margin: 10px;">
+	<!-- <div class="row"> -->
 	{% for x in all_rest %}
-	<li>{{x.name}}</li>
+	<li  style="float:left; margin: 5px;">
+    <div class="col s12 m7">
+      <div class="card medium" style="width:250px; height:400px;">
+        
+        <div class="card-content">
+        	<div class="card-image">
+          <img src="{{x.images.url}}" style="height:250px; width:250px;">
+        </div>
+        	<span class="card-title">{{x.name}}</span>
+        </div>
+        <div class="card-action">
+          <a href="#">Know more</a>
+        </divs>
+      </div>
+    </div>
+            </li>
 	{% endfor %}
+<!-- </div> -->
 </ul>
 {% endblock %}

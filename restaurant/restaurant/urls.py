@@ -17,6 +17,9 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from index import views as index_views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
 	url(r'^$',index_views.home,name='home'),
@@ -26,4 +29,11 @@ urlpatterns = [
     url(r'^restaurants/',include('rest_page.urls')),
 	url(r'^login/$',auth_views.login,{'template_name':'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
-]
+    # url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# if settings.DEBUG:
+#     # static files (images, css, javascript, etc.)
+#     urlpatterns += patterns('',
+#         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+#         'document_root': settings.MEDIA_ROOT}))
