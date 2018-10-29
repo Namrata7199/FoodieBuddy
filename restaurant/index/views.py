@@ -9,6 +9,7 @@ from .forms import SignUpForm,RestaurantForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
+@login_required
 def home(request):
 	return render(request,'home.html')
 
@@ -28,7 +29,7 @@ def signupasuser(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect('list')
     else:
         form = SignUpForm()
     return render(request, 'signupasuser.html', {'form': form})	
@@ -47,10 +48,12 @@ def signupasrest(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, rest)
-            return redirect('home')
+            return redirect('list')
     else:
         form = RestaurantForm()
     return render(request, 'signupasrest.html',{'form':form})    
 
 	
-
+def view_profile(request):
+    current_user = request.user
+    return render(request,'profile.html', {'user' : current_user})

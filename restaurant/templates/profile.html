@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="conatiner">
+	{{user}}
+	<div>Name : {{user.first_name}} {{user.last_name}}</div><br>
+	<div>Address : {{user.street}}  {{user.city}}</div><br>
+	<div>Phone No : {{user.phn}}</div><br>
+	<div>Visited Restaurants : <br>
+		<ul>
+			{% for x in user.rest_set.all %}
+			<li>{{x.name}}</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+{% endblock %}
