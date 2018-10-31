@@ -17,6 +17,7 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from index import views as index_views
+from user_profile import views as profile_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -24,11 +25,11 @@ from django.conf.urls.static import static
 urlpatterns = [
 	url(r'^$',index_views.home,name='home'),
 	url(r'^admin/', admin.site.urls),
-	url(r'^signup/$',index_views.signupasuser, name='signupasuser'),
-	url(r'^register/$',index_views.signupasrest, name='signupasrest'),
+	url(r'^signup/$',profile_views.signup, name='signupasuser'),
+	# url(r'^register/$',index_views.signupasrest, name='signupasrest'),
     url(r'^restaurants/',include('rest_page.urls')),
 	url(r'^login/$',auth_views.login,{'template_name':'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
-    url(r'^user/$',index_views.view_profile,name="view_profile"),
+    url(r'^user/$',profile_views.view_profile,name="view_profile"),
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
