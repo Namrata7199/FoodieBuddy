@@ -18,7 +18,6 @@ class restaurants(models.Model):
 	phn = models.CharField(max_length=10)
 	images = models.ImageField(upload_to = 'media/')
 	menupk = models.ManyToManyField(rest_menu)
-	cuisine = models.CharField(max_length=30)
 
 	class meta:
 		db_table = 'restaurants'

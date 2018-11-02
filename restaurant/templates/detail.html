@@ -4,12 +4,15 @@
 <h2>{{detail.name}}</h2><br>
 <div class="col-sm-offset-5 col-sm-8">
 GST INDEX: {{detail.gstin}}<br>
-Cuisine : {{detail.Cuisine}}<br>
 Door Number : {{detail.dno}}<br>
 Street : {{detail.street}}<br>
 City : {{detail.city}}<br>
 Phone Number : {{detail.phn}}<br>
-<img src="{{detail.images.url}}" style="height:250px; width:250px;">
+<img src="{{detail.images.url}}" style="height:250px; width:250px;"><br>
+Menu:<br>
+{% for x in detail.menupk.all %}
+	<p> {{x.food}} {{x.price}} {{x.cuisine}} </p>
+{% endfor %}
 <input style = "float: left;" type=button onClick="location.href='review'" value='write a review for this restaurant'>
 </div>
 {% endblock %}
