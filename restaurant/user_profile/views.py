@@ -19,9 +19,11 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
+@login_required
 def view_profile(request):
-     current_user = request.user
-     return render(request,'profile.html', {'user' : current_user})
+     # current_user = request.user
+     current_user = userprofile.objects.get(user = request.user)
+     return render(request,'profile.html', {'profile' : current_user})
 
 @login_required
 def fill_form(request):
@@ -33,7 +35,7 @@ def fill_form(request):
 			form = DetailsForm(request.POST)
 			if form.is_valid():
 				form.instance.user=request.user
-				# form.save()
+				form.save()
 				return redirect('rest_page:list')
 		else:
 			form = DetailsForm()
