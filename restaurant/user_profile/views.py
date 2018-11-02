@@ -29,7 +29,7 @@ def view_profile(request):
 def fill_form(request):
 	try: 
 		if (request.user.userprofile):
-			return redirect('home')
+			return redirect('rest_page:list')
 	except:		
 		if request.method=='POST':
 			form = DetailsForm(request.POST)
