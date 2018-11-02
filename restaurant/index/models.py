@@ -16,13 +16,13 @@ class restaurants(models.Model):
 	street = models.CharField(max_length=30)
 	city = models.CharField(max_length=30)
 	phn = models.CharField(max_length=10)
-	images = models.ImageField(max_length=10000)
+	images = models.ImageField(upload_to = 'media/')
 	menupk = models.ManyToManyField(rest_menu)
 	cuisine = models.CharField(max_length=30)
 
 	class meta:
 		db_table = 'restaurants'
-		unique_together = (('name','dno','street','city','phn','images'),)
+		unique_together = (('name','dno','street','city','phn'),)
 
 class owner(models.Model):
 	first_name = models.CharField(max_length=30)

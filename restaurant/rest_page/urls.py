@@ -6,4 +6,9 @@ app_name = 'rest_page'
 
 urlpatterns = [
 	url(r'^$',views.list,name="list"),
+	url(r'^restreg/$',views.restreg,name="restreg"),
+	url(r'^(?P<pk>[0-9]+)/$',views.details,name="details"),
+	url(r'^(?P<pk>[0-9]+)/review/$',views.review,name="review"),
+	url(r'^(?P<pk>[0-9]+)/review/thanks/$',views.thanks,name="thanks"),
+	#url(r'^search/$', views.search, name='search'),
 ]

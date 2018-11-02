@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <h2>Reviews for Restaurant {{detail.gstin}}</h2>
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" onclick="list.html" value="Submit">
+  </form>
+{% endblock %}

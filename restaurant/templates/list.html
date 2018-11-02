@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+<input style = "float: right; margin-top: 10px;
+"type=button onClick="location.href='restreg'" value='Add a restaurant'>    
 <ul style="margin: 10px;">
 	<!-- <div class="row"> -->
 	{% for x in all_rest %}
@@ -14,7 +16,7 @@
         	<span class="card-title">{{x.name}}</span>
         </div>
         <div class="card-action">
-          <a href="#">Know more</a>
+          <a href="/restaurants/{{x.pk}}">Know more</a>
         </divs>
       </div>
     </div>

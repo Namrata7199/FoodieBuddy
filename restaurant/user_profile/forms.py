@@ -13,4 +13,4 @@ class SignUpForm(UserCreationForm):
 class DetailsForm(ModelForm):
 	class Meta:
 		model = userprofile
-		fields = ('street','city','phn')
+		fields = ('street','city','phn')		
