@@ -2,11 +2,9 @@
 
 {% block content %}
 <div class="conatiner">
-	{{user}}
-	<div>Name : {{user.first_name}} {{user.last_name}}</div><br>
-	<div>Address : {{user.street}}  {{user.city}}</div><br>
-	<div>Phone No : {{user.phn}}</div><br>
-	<div>Birth : {{user.birth_date}}</div><br>
+	<div>Name : {{profile.user.first_name}} {{profile.user.last_name}}</div><br>
+	<div>Address : {{profile.street}}  {{profile.city}}</div><br>
+	<div>Phone No : {{profile.phn}}</div><br>
 	<div>Email : {{user.email}}</div><br>
 	<div>Visited Restaurants : <br>
 		<ul>
