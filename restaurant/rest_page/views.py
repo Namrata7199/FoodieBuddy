@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render,redirect
-from index.models import restaurants,rest_menu,reviews
+from index.models import restaurants,rest_menu,reviews,owner
 from .forms import ReviewForm,RestaurantForm,MenuForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
@@ -18,6 +18,11 @@ def restreg(request):
     	form = RestaurantForm(request.POST,request.FILES)
     	if form.is_valid():
     		rest = form.save()
+    		x = owner()
+    		x.first_name = request.user.first_name
+    		x.last_name = request.user.last_name
+    		x.gstin = rest
+    		x.save()
     		return  redirect('rest_page:add_menu', pk=rest.pk)
     else:
     	form = 	RestaurantForm()

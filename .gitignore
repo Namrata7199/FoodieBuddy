@@ -1,5 +1,5 @@
-db.sqlite3
-media
-index/migrations
-rest_page/migrations
-user_profile/migrations
+restaurant/db.sqlite3
+restaurant/media
+restaurant/index/migrations
+restaurant/rest_page/migrations
+restaurant/user_profile/migrations
