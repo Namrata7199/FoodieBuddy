@@ -5,6 +5,7 @@ from django.shortcuts import render,redirect
 from index.models import restaurants,rest_menu,reviews
 from user_profile.models import userprofile
 from .forms import ReviewForm,RestaurantForm
+from .forms import ReviewForm,RestaurantForm,MenuForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 # Create your views here.
@@ -18,8 +19,8 @@ def restreg(request):
     if request.method == 'POST':
     	form = RestaurantForm(request.POST,request.FILES)
     	if form.is_valid():
-    		form.save()
-    		return  redirect('rest_page:list')
+    		rest = form.save()
+    		return  redirect('rest_page:add_menu', pk=rest.pk)
     else:
     	form = 	RestaurantForm()
     return render(request,'signupasrest.html',{'form' : form})
@@ -49,3 +50,15 @@ def thanks(request,pk):
 	detail = restaurants.objects.get(pk=pk)
 	return render(request,'thanks.html',{'detail':detail})
 
+def add_menu(request,pk):
+	if request.method=='POST':
+		form = MenuForm(request.POST)
+		if form.is_valid():
+			x = form.save()
+			rest = restaurants.objects.get(pk=pk)
+			rest.menupk.add(x)
+			rest.save()
+			return redirect('rest_page:add_menu', pk=pk)
+	else:
+		form = MenuForm()
+	return render(request,'add_menu.html',{'form':form, 'rest_pk':pk})

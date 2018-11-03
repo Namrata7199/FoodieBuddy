@@ -10,5 +10,6 @@ urlpatterns = [
 	url(r'^(?P<pk>[0-9]+)/$',views.details,name="details"),
 	url(r'^(?P<pk>[0-9]+)/review/$',views.review,name="review"),
 	url(r'^(?P<pk>[0-9]+)/review/thanks/$',views.thanks,name="thanks"),
+	url(r'^restreg/(?P<pk>[0-9]+)/$',views.add_menu,name="add_menu"),
 	#url(r'^search/$', views.search, name='search'),
 ]
