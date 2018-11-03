@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from user_profile.models import userprofile
 from django.db import models
 
 # Create your models here.
@@ -31,8 +31,8 @@ class owner(models.Model):
 class reviews(models.Model):
 	ratings = models.IntegerField()
 	Feedback = models.CharField(max_length=1000)
-	gstin = models.ForeignKey(restaurants,on_delete=models.CASCADE)
-	userpk = models.ForeignKey(owner,on_delete=models.CASCADE)
+	gstin = models.ForeignKey(restaurants,on_delete=models.CASCADE,blank=True)
+	userpk = models.ForeignKey(userprofile,on_delete=models.CASCADE,blank=True)
 # class user(models.Model):
 	# email = models.CharField(primary_key=True,max_length = 30)
 	# first_name = models.CharField(max_length=30)
