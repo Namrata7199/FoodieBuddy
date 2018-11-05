@@ -26,7 +26,6 @@ urlpatterns = [
 	url(r'^$',index_views.home,name='home'),
 	url(r'^admin/', admin.site.urls),
 	url(r'^signup/$',profile_views.signup, name='signupasuser'),
-	# url(r'^register/$',index_views.signupasrest, name='signupasrest'),
     url(r'^restaurants/',include('rest_page.urls')),
 	url(r'^login/$',auth_views.login,{'template_name':'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),

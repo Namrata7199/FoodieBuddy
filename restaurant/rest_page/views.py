@@ -7,34 +7,37 @@ from user_profile.models import userprofile
 from .forms import ReviewForm,RestaurantForm,MenuForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+
+@login_required
 def list(request):
 	all_rest = restaurants.objects.all()
-	#print all_rest
 	return render(request,'list.html',{'all_rest' : all_rest})
 
 def restreg(request):
-    # all_rest = restaurants.objects.all()
     if request.method == 'POST':
     	form = RestaurantForm(request.POST,request.FILES)
+    	print(form)
     	if form.is_valid():
-    		rest = form.save()
+    		rest = form.save(commit=False)
     		x = owner()
-    		x.first_name = request.user.first_name
-    		x.last_name = request.user.last_name
-    		x.gstin = rest
+    		x.user = request.user
     		x.save()
+    		rest.userpk = x
+    		rest.save()
     		return  redirect('rest_page:add_menu', pk=rest.pk)
     else:
     	form = 	RestaurantForm()
-    return render(request,'signupasrest.html',{'form' : form})
+    return render(request,'add_restaurant.html',{'form' : form})
 
 def details(request,pk):
 	detail = restaurants.objects.get(pk=pk)
-	return render(request,'detail.html',{'detail':detail})		
+	user = request.user
+	return render(request,'detail.html',{'detail':detail, 'user': user})		
 
 def review(request,pk):
-	#detail = restaurants.objects.get(pk=pk)
 	if request.method == 'POST':
 		form = ReviewForm(request.POST)
 		if form.is_valid():
@@ -43,7 +46,6 @@ def review(request,pk):
 			x.gstin=detail
 			y = request.user.userprofile
 			x.userpk=y
-			#print(request.user)
 			x.save()
 			return HttpResponseRedirect('thanks')
 	else:
@@ -66,3 +68,30 @@ def add_menu(request,pk):
 	else:
 		form = MenuForm()
 	return render(request,'add_menu.html',{'form':form, 'rest_pk':pk})
+
+def search_by_name(request):
+	if request.method == "POST":
+		name = request.POST['name']
+		if name:
+			data = restaurants.objects.filter(name=name)
+			return render(request, 'list.html', {'all_rest': data})
+		else:
+			return redirect('rest_page:list')       
+	else:
+		return redirect('rest_page:list')					
+
+def search_by_cuisine(request):
+	if request.method == "POST":
+		name = request.POST['cuisine']
+		res = []
+		if name:
+			for x in restaurants.objects.all():
+				for y in x.menupk.all():
+					if name==y.cuisine:
+						res.append(x)
+						break;
+			return render(request, 'list.html', {'all_rest': res})
+		else:
+			return redirect('rest_page:list')       
+	else:
+		return redirect('rest_page:list')					

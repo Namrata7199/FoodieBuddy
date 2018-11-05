@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .models import userprofile
+from index.models import owner,restaurants
 from .forms import SignUpForm,DetailsForm
 from django.contrib.auth.decorators import login_required
 
@@ -21,9 +22,12 @@ def signup(request):
 
 @login_required
 def view_profile(request):
-     # current_user = request.user
      current_user = userprofile.objects.get(user = request.user)
-     return render(request,'profile.html', {'profile' : current_user})
+     lis= []
+     x = owner.objects.filter(user = current_user.user)
+     for i in x:
+        lis.append(restaurants.objects.get(userpk=i))
+     return render(request,'profile.html', {'profile' : current_user,'list':lis})
 
 @login_required
 def fill_form(request):

@@ -9,6 +9,4 @@ from .models import rest_menu,restaurants,owner,reviews
 admin.site.register(rest_menu)
 admin.site.register(restaurants)
 admin.site.register(owner)
-#admin.site.register(user)
 admin.site.register(reviews)
-#admin.site.register(search_by_cuisine)

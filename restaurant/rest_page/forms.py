@@ -2,8 +2,6 @@ from django.forms import ModelForm
 from index.models import reviews,restaurants,rest_menu
 
 class ReviewForm(ModelForm):
-	#ratings = forms.IntegerField()
-	#Feedback = forms.CharField(max_length=254, help_text = 'Mandatory.')
 	class Meta:
 		model = reviews
 		fields = ['ratings','Feedback',]
