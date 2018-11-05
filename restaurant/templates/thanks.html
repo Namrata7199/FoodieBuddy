@@ -3,6 +3,12 @@
 {% block title %}Thanks{% endblock %}
  
 {% block content %}
-<h3>Thanks for your response for Restaurant {{detail.name}}</h3>
-<!-- <p><a>Response again?</a></p> -->
+<div class="container card" style="margin-left:auto; margin-right:auto; margin-top: :20px;">
+<div class="card-title">
+	Thanks for your response for Restaurant {{detail.name}}
+
+</div>
+<div class="card-content">
+	<a href="{% url 'rest_page:list' %}">Continue searching?</a>
+</div>
 {% endblock %}

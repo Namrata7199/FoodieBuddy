@@ -21,7 +21,6 @@ def signup(request):
 
 @login_required
 def view_profile(request):
-     # current_user = request.user
      current_user = userprofile.objects.get(user = request.user)
      return render(request,'profile.html', {'profile' : current_user})
 

@@ -1,18 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
 <br>
-<h2>{{detail.name}}</h2><br>
-<div class="col-sm-offset-5 col-sm-8">
-GST INDEX: {{detail.gstin}}<br>
-Door Number : {{detail.dno}}<br>
-Street : {{detail.street}}<br>
-City : {{detail.city}}<br>
-Phone Number : {{detail.phn}}<br>
-<img src="{{detail.images.url}}" style="height:250px; width:250px;"><br>
-Menu:<br>
-{% for x in detail.menupk.all %}
-	<p> {{x.food}} {{x.price}} {{x.cuisine}} </p>
-{% endfor %}
-<input style = "float: left;" type=button onClick="location.href='review'" value='write a review for this restaurant'>
+<div class="container row">
+	<div class="col s6">
+		<img src="{{detail.images.url}}" style="height:250px; width:250px; margin:35px;">
+	</div>
+	<div class="col s6">
+		<div class="card" style="padding: 5px;">
+			<div class="card-title center"><h2>{{detail.name}}</h2></div>
+			<div class="card-content">
+				<b>GST INDEX :</b> {{detail.gstin}}<br>
+				<b>Door Number :</b> {{detail.dno}}<br>
+				<b>Street :</b> {{detail.street}}<br>
+				<b>City :</b> {{detail.city}}<br>
+				<b>Phone Number :</b> {{detail.phn}}<br>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+<h2>Menu</h2>
+<table class="table table-hover responsive-table">
+    <thead>
+    <tr>
+      <th scope="col">Dish</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Cuisine</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in detail.menupk.all %}
+        <tr>
+          <td>{{ x.food }}</td>
+          <td>{{ x.price }}</td>
+          <td>{{ x.cuisine }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="center" style="margin:10px;">
+{% if user == detail.userpk.user %}
+<div class="container">
+  <h2>Reviews and Ratings</h2>
+<table class="table table-hover responsive-table">
+    <thead>
+    <tr>
+      <th scope="col">Rating</th>
+      <th scope="col">Review</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in detail.reviews_set.all %}
+      <tr>
+          <td>{{ x.ratings }}</td>
+          <td>{{ x.Feedback }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+{% else %}
+<button class="btn btn-secondary my-2 my-sm-0" onClick="location.href='review'" style="">Write a Review</button>
+{% endif %}
 </div>
 {% endblock %}

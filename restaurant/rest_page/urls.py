@@ -11,5 +11,7 @@ urlpatterns = [
 	url(r'^(?P<pk>[0-9]+)/review/$',views.review,name="review"),
 	url(r'^(?P<pk>[0-9]+)/review/thanks/$',views.thanks,name="thanks"),
 	url(r'^restreg/(?P<pk>[0-9]+)/$',views.add_menu,name="add_menu"),
-	#url(r'^search/$', views.search, name='search'),
+    url(r'^search_by_name/$',views.search_by_name,name='search_by_name'),
+    url(r'^search_by_cuisine/$',views.search_by_cuisine,name='search_by_cuisine'),
+
 ]
