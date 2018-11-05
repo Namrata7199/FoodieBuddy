@@ -48,7 +48,8 @@ def review(request,pk):
 			return HttpResponseRedirect('thanks')
 	else:
 		form = ReviewForm()
-	return render(request,'review.html',{'form':form})			
+		detail = restaurants.objects.get(pk=pk)
+	return render(request,'review.html',{'form':form,'detail':detail})			
 
 def thanks(request,pk):
 	detail = restaurants.objects.get(pk=pk)

@@ -41,7 +41,6 @@
 </table>
 </div>
 <div class="center" style="margin:10px;">
-{% if user == detail.userpk.user %}
 <div class="container">
   <h2>Reviews and Ratings</h2>
 <table class="table table-hover responsive-table">
@@ -60,8 +59,7 @@
       </tr>
     {% endfor %}
   </tbody>
-{% else %}
 <button class="btn btn-secondary my-2 my-sm-0" onClick="location.href='review'" style="">Write a Review</button>
-{% endif %}
+
 </div>
 {% endblock %}
