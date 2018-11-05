@@ -4,9 +4,9 @@
 <head>
 	<title>FoodieBuddy</title>
 	<meta charset="UTF-8">
-    <meta name="description" content="Taskforce NITK">
-    <meta name="keywords" content="Taksforce,NITK,Modules">
-    <meta name="author" content="Taskforce NITK">
+    <meta name="description" >
+    <meta name="keywords" >
+    <meta name="author" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
@@ -18,7 +18,7 @@
 <body>
 	<nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">FoodieBuddy</a>
+      <a href="{% url 'rest_page:list' %}" class="brand-logo">FoodieBuddy</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li>{% if user.is_authenticated %}

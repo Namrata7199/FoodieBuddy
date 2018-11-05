@@ -39,6 +39,7 @@
     {% endfor %}
   </tbody>
 </table>
+<a href="{% url 'rest_page:add_menu' detail.pk%}"><button class="btn btn-secondary my-2 my-sm-0" style="margin:50px;">Add Menu</button></a>
 </div>
 <div class="center" style="margin:10px;">
 <div class="container">
@@ -59,6 +60,7 @@
       </tr>
     {% endfor %}
   </tbody>
+{% if user != detail.userpk.user %}
 <button class="btn btn-secondary my-2 my-sm-0" onClick="location.href='review'" style="">Write a Review</button>
 
 </div>

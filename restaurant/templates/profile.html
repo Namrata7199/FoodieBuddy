@@ -6,12 +6,31 @@
 	<div><b>Address :</b> {{profile.street}}  {{profile.city}}</div><br>
 	<div><b>Phone No :</b> {{profile.phn}}</div><br>
 	<div><b>Email :</b> {{user.email}}</div><br>
-	<!-- <div>Visited Restaurants : <br>
-		<ul>
-			{% for x in user.reviews_set.all %}
-			<li>{{x}}</li>
-			{% endfor %}
-		</ul>
-	</div> -->
+	</div>
+	  <div class="container">
+	  <h2>Your Restaurants</h2>
+<ul style="margin: 10px;">
+	{% for x in list %}
+	<li  style="float:left; margin: 10px;">
+    <div class="col s12 m7">
+      <div class="card medium" style="width:250px; height:400px;">
+        
+        <div class="card-content">
+        	<div class="card-image">
+          <img src="{{x.images.url}}" style="height:250px; width:250px;">
+        </div>
+        	<span class="card-title">{{x.name}}</span>
+        </div>
+        <div class="card-action">
+          <a href="/restaurants/{{x.pk}}">Know more</a>
+        </div>
+      </div>
+    </div>
+            </li>
+	{% endfor %}
+</ul>
 </div>
+
+
+
 {% endblock %}
