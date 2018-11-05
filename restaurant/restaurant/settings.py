@@ -79,8 +79,13 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'foodiebuddy',
+    'USER': 'foodiebuddyuser',
+    'PASSWORD':'Password@0',
+    'HOST':'localhost',
+    'PORT':'',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

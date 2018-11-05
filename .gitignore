@@ -1,5 +1,5 @@
 restaurant/db.sqlite3
-restaurant/media
+restaurant/media/*
 restaurant/index/migrations
 restaurant/rest_page/migrations
 restaurant/user_profile/migrations

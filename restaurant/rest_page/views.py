@@ -2,10 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render,redirect
-from index.models import restaurants,rest_menu,reviews,owner
-from index.models import restaurants,rest_menu,reviews
+from index.models import restaurants,rest_menu,reviews,owner 
 from user_profile.models import userprofile
-from .forms import ReviewForm,RestaurantForm
 from .forms import ReviewForm,RestaurantForm,MenuForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
